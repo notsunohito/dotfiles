@@ -49,3 +49,21 @@
 
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
+
+;; C-hをバックスペースへ
+(keyboard-translate ?\C-h ?\C-?)
+;; ¥ to \
+(global-set-key [?¥] [?\\])
+
+(global-set-key (kbd "C-c l") 'toggle-truncate-lines)
+
+(global-set-key (kbd "C-t") 'other-window)
+
+(column-number-mode t)
+
+(setq frame-title-format "%b : %f")
+
+;; 行番号の表示
+;;(global-linum-mode t)
+
+(global-set-key (kbd "C-x C-c") nil)
