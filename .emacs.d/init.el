@@ -66,4 +66,4 @@
 ;; 行番号の表示
 ;;(global-linum-mode t)
 
-(global-set-key (kbd "C-x C-c") nil)
+;;(global-set-key (kbd "C-x C-c") nil)
