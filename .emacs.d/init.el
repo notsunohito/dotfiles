@@ -37,7 +37,7 @@
 
 ;;カーソル設定
 (setq-default cursor-type '(bar . 2))
-(set-cursor-color 'controlLightHighlightColor)
+;;(set-cursor-color 'controlLightHighlightColor)
 
 ;; ツールバー非表示
 (tool-bar-mode 0)
@@ -67,3 +67,8 @@
 ;;(global-linum-mode t)
 
 ;;(global-set-key (kbd "C-x C-c") nil)
+
+(global-set-key (kbd "C-z") nil)
+
+(setq visible-bell t)
+(setq ring-bell-function 'ignore) 
