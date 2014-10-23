@@ -22,30 +22,6 @@
   "Prevent y-or-n-p from activating a dialog"
   (let ((use-dialog-box nil))
     ad-do-it))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (misterioso))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-;; 英語
-(set-face-attribute 'default nil
-           :family "Menlo" ;; font
-           :height 150)    ;; font size
- 
-;; 日本語
-(set-fontset-font
- nil 'japanese-jisx0208
-;; (font-spec :family "Hiragino Mincho Pro")) ;; font
-  (font-spec :family "Hiragino Kaku Gothic ProN")) ;; font
  
 ;; 半角と全角の比を1:2に
 (setq face-font-rescale-alist
