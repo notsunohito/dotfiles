@@ -1,3 +1,4 @@
+
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 ;; ------------------------------------------------------------------------
 ;; @ load-path
@@ -60,7 +61,49 @@
 
 ;;(global-set-key (kbd "C-x C-c") nil)
 
-(global-set-key (kbd "C-z") nil)
+(global-set-key (kbd "C-z") 'undo)
 
 (setq visible-bell t)
 (setq ring-bell-function 'ignore) 
+
+(add-hook 'dired-mode-hook
+  (lambda ()
+    (define-key dired-mode-map (kbd "q") 'dired-up-directory)
+    (local-unset-key (kbd "C-t"))
+    ))
+
+(defun window-resizer ()
+  "Control window size and position."
+  (interactive)
+  (let ((window-obj (selected-window))
+        (current-width (window-width))
+        (current-height (window-height))
+        (dx (if (= (nth 0 (window-edges)) 0) 1
+              -1))
+        (dy (if (= (nth 1 (window-edges)) 0) 1
+              -1))
+        c)
+    (catch 'end-flag
+      (while t
+        (message "size[%dx%d]"
+                 (window-width) (window-height))
+        (setq c (read-char))
+        (cond ((= c ?d)
+               (enlarge-window-horizontally dx))
+              ((= c ?a)
+               (shrink-window-horizontally dx))
+              ((= c ?s)
+               (enlarge-window dy))
+              ((= c ?w)
+               (shrink-window dy))
+              ;; otherwise
+              (t
+               (message "Quit")
+               (throw 'end-flag t)))))))
+
+
+(global-set-key "\C-c\C-r" 'window-resizer)
+
+;;通常のウィンドウ用の設定
+(setq-default truncate-lines t)
+(put 'dired-find-alternate-file 'disabled nil)
