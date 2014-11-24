@@ -107,3 +107,6 @@
 ;;通常のウィンドウ用の設定
 (setq-default truncate-lines t)
 (put 'dired-find-alternate-file 'disabled nil)
+
+
+(setq-default tab-width 4 indent-tabs-mode nil)
