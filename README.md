@@ -1,0 +1,3 @@
+dependencies
+
+daleharvey/jshint-mode
