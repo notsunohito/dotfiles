@@ -52,7 +52,7 @@
 
 (global-set-key (kbd "C-t") 'other-window)
 
-(column-number-mode t)
+;;(column-number-mode t)
 
 (setq frame-title-format "%b : %f")
 
@@ -110,3 +110,50 @@
 
 
 (setq-default tab-width 4 indent-tabs-mode nil)
+
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(add-to-list 'load-path "~/projects/dotfiles/.emacs.d/public_repos/jshint-mode")
+(require 'flymake-jshint)
+(add-hook 'js2-mode-hook
+     (lambda () (flymake-mode t)))
+
+(require 'darcula-theme)
+
+
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+
+
+;; ctags.elの設定
+(require 'ctags nil t)
+(setq tags-revert-without-query t)
+;; ctagsを呼び出すコマンドライン。パスが通っていればフルパスでなくてもよい
+;; etags互換タグを利用する場合はコメントを外す
+(setq ctags-command "ctags -e -R ")
+;; anything-exuberant-ctags.elを利用しない場合はコメントアウトする
+;;(setq ctags-command "ctags -R --fields=\"+afikKlmnsSzt\" ")
+(global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
+
+;;; yasnippet
+;;; should be loaded before auto complete so that they can work together
+;; (require 'yasnippet)
+;; (yas-global-mode 1)
+(add-to-list 'load-path
+              "~/.emacs.d/elpa/yasnippet-0.8.0")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+
+;;; auto complete mod
+;;; should be loaded after yasnippet so that they can work together
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+;;; set the trigger key so that it can work together with yasnippet on tab key,
+;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
+;;; activate, otherwise, auto-complete will
+;;(ac-set-trigger-key "TAB")
+;;(ac-set-trigger-key "<tab>")
