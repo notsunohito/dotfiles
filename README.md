@@ -1,5 +1,4 @@
 #.emacs.d/
-
 ## Dependencies
 
 * [daleharvey/jshint-mode](https://github.com/daleharvey/jshint-mode)
