@@ -165,3 +165,4 @@
 ;;(ac-set-trigger-key "TAB")
 ;;(ac-set-trigger-key "<tab>")
 
+(exec-path-from-shell-initialize)
