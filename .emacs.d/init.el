@@ -165,4 +165,5 @@
 ;;(ac-set-trigger-key "TAB")
 ;;(ac-set-trigger-key "<tab>")
 
-(exec-path-from-shell-initialize)
+(if (not (eq system-type 'windows-nt))
+    (exec-path-from-shell-initialize))
