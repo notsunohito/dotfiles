@@ -1,3 +1,10 @@
+(require 'package)
+
+;; MELPAを追加
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+;; 初期化
+(package-initialize)
 
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 ;; ------------------------------------------------------------------------
@@ -157,3 +164,4 @@
 ;;; activate, otherwise, auto-complete will
 ;;(ac-set-trigger-key "TAB")
 ;;(ac-set-trigger-key "<tab>")
+
