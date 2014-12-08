@@ -167,3 +167,6 @@
 
 (if (not (eq system-type 'windows-nt))
     (exec-path-from-shell-initialize))
+
+(require 'smartparens-config)
+(smartparens-global-mode t)
