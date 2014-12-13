@@ -177,3 +177,6 @@
  '(anzu-mode-lighter "")
  '(anzu-deactivate-region t)
  '(anzu-search-threshold 1000))
+
+
+(global-set-key "\C-c\C-t" 'other-frame)
