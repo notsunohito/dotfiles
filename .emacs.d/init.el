@@ -180,3 +180,5 @@
 
 
 (global-set-key "\C-c\C-t" 'other-frame)
+
+(menu-bar-mode 0)
