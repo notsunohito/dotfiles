@@ -182,3 +182,22 @@
 (global-set-key "\C-c\C-t" 'other-frame)
 
 (menu-bar-mode 0)
+
+(require 'cl-lib) ;; emacs 24.3 標準で付属
+(defun my-dired-sqlite ()
+  (interactive)
+  (let ((file (dired-get-filename))
+        (buffer (format "SQLite%s" (cl-gensym))))
+    (async-shell-command (format "sqlite3 '%s'" file) buffer)
+    (switch-to-buffer buffer)
+    (insert ".header on")
+    (execute-kbd-macro (kbd "RET"))
+    (insert ".mode column")
+    (execute-kbd-macro (kbd "RET"))
+    (insert ".tables")
+    (execute-kbd-macro (kbd "RET"))))
+
+;;haskell-mode
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
