@@ -198,6 +198,44 @@
     (execute-kbd-macro (kbd "RET"))))
 
 ;;haskell-mode
+;; (setq haskell-program-name "/usr/bin/ghci")
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
+
+(add-to-list 'load-path "~/.emacs.d/elisp/haskell-mode-2.8.0")
+
+(require 'haskell-mode)
+(require 'haskell-cabal)
+
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
+
+(add-to-list 'interpreter-mode-alist '("runghc" . haskell-mode))     ;#!/usr/bin/env runghc 用
+(add-to-list 'interpreter-mode-alist '("runhaskell" . haskell-mode)) ;#!/usr/bin/env runhaskell 用
+
+;; https://github.com/m2ym/auto-complete
+(ac-define-source ghc-mod
+  '((depends ghc)
+    (candidates . (ghc-select-completion-symbol))
+    (symbol . "s")
+    (cache)))
+
+(defun my-ac-haskell-mode ()
+  (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod)))
+(add-hook 'haskell-mode-hook 'my-ac-haskell-mode)
+
+(defun my-haskell-ac-init ()
+  (when (member (file-name-extension buffer-file-name) '("hs" "lhs"))
+    (auto-complete-mode t)
+    (setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-ghc-mod))))
+
+(add-hook 'find-file-hook 'my-haskell-ac-init)
+
+(defadvice haskell-indent-indentation-info (after haskell-indent-reverse-indentation-info)
+  (when (>= (length ad-return-value) 2)
+    (let ((second (nth 1 ad-return-value)))
+      (setq ad-return-value (cons second (delete second ad-return-value))))))
+
+(ad-activate 'haskell-indent-indentation-info)
