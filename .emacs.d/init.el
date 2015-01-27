@@ -239,3 +239,5 @@
       (setq ad-return-value (cons second (delete second ad-return-value))))))
 
 (ad-activate 'haskell-indent-indentation-info)
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
