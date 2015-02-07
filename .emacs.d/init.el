@@ -245,9 +245,11 @@
 ;; (when (member "DejaVu Sans Mono" (font-family-list))
 ;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
 
-(set-default-font "Inconsolata-13")
-(set-face-font 'variable-pitch "Inconsolata-13")
+(set-default-font "Inconsolata-12")
+(set-face-font 'variable-pitch "Inconsolata-12")
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
                   '(".*Hiragino_Mincho_pro.*" . "unicode-bmp")
 )
+
+(setq line-spacing 0.3)
