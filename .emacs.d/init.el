@@ -20,7 +20,6 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 
 (add-to-load-path "elisp" "conf" "public_repos")
-
 ;; ------------------------------------------------------------------------
 (defadvice yes-or-no-p (around prevent-dialog activate)
   "Prevent yes-or-no-p from activating a dialog"
@@ -32,8 +31,8 @@
     ad-do-it))
  
 ;; 半角と全角の比を1:2に
-(setq face-font-rescale-alist
-      '((".*Hiragino_Mincho_pro.*" . 1.2)))
+;; (setq face-font-rescale-alist
+;;       '((".*Hiragino_Mincho_pro.*" . 1.2)))
 
 ;;カーソル設定
 (setq-default cursor-type '(bar . 2))
@@ -241,3 +240,14 @@
 (ad-activate 'haskell-indent-indentation-info)
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+;;-------------------------------------------------------------------------
+;; (when (member "DejaVu Sans Mono" (font-family-list))
+;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
+
+(set-default-font "Inconsolata-13")
+(set-face-font 'variable-pitch "Inconsolata-13")
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0208
+                  '(".*Hiragino_Mincho_pro.*" . "unicode-bmp")
+)
