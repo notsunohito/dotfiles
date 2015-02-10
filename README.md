@@ -3,3 +3,6 @@
 
 * nodejs
 * ctags
+* Inconsolata
+* GHC
+
