@@ -5,4 +5,3 @@
 * ctags
 * Inconsolata
 * GHC
-
