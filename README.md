@@ -5,4 +5,4 @@
 * ctags
 * Inconsolata
 * GHC
-
+* typescript-tools
