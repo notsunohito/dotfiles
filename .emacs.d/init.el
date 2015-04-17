@@ -298,3 +298,6 @@
       (error "Cannot get a file name"))))
 
 (column-number-mode t)
+
+
+(global-set-key "\C-c\C-l" 'goto-line)
