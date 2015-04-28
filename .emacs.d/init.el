@@ -248,8 +248,8 @@
 (set-default-font "Inconsolata-12")
 (set-face-font 'variable-pitch "Inconsolata-12")
 (set-fontset-font (frame-parameter nil 'font)
-                  'japanese-jisx0208
-                  '(".*Hiragino_Mincho_pro.*" . "unicode-bmp")
+                'japanese-jisx0208
+                '(".*Hiragino_Mincho_pro.*" . "unicode-bmp")
 )
 
 (setq line-spacing 0.3)
@@ -301,3 +301,7 @@
 
 
 (global-set-key "\C-c\C-l" 'goto-line)
+
+(setq create-lockfiles nil)
+
+(add-hook 'dired-mode-hook 'dired-hide-details-mode)
