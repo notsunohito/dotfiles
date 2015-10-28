@@ -161,8 +161,13 @@
 ;;; set the trigger key so that it can work together with yasnippet on tab key,
 ;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
 ;;; activate, otherwise, auto-complete will
+
 ;;(ac-set-trigger-key "TAB")
 ;;(ac-set-trigger-key "<tab>")
+(setq ac-auto-start nil)
+;;(ac-set-trigger-key "TAB")  ; TABで補完開始(トリガーキー)
+;; or
+(define-key ac-mode-map [C-tab] 'auto-complete)  ; M-TABで補完開始
 
 (if (not (eq system-type 'windows-nt))
     (exec-path-from-shell-initialize))
@@ -173,9 +178,14 @@
 (global-anzu-mode +1)
 
 (custom-set-variables
- '(anzu-mode-lighter "")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(anzu-deactivate-region t)
- '(anzu-search-threshold 1000))
+ '(anzu-mode-lighter "")
+ '(anzu-search-threshold 1000)
+ '(tab-width 2))
 
 
 (global-set-key "\C-c\C-t" 'other-frame)
@@ -305,3 +315,16 @@
 (setq create-lockfiles nil)
 
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+(add-to-list 'load-path "public_repos/helm/")
+
+(require 'helm-config)
+(define-key global-map (kbd "M-x")     'helm-M-x)
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
