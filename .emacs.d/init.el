@@ -262,7 +262,7 @@
                 '(".*Hiragino_Mincho_pro.*" . "unicode-bmp")
 )
 
-(setq line-spacing 0.3)
+(setq line-spacing 0.5)
 
 (defun swap-screen()
   "Swap two screen,leaving cursor at current window."
@@ -326,7 +326,5 @@
 (add-to-list 'load-path "public_repos/helm/")
 
 (require 'helm-config)
-(helm-mode 1)
 (define-key global-map (kbd "M-x")     'helm-M-x)
-(define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-c C-f") 'helm-find)
